@@ -1,0 +1,65 @@
+:root {
+  --white: #fff;
+  --black: #000;
+  --carousel-max-width: 600px;
+  --carousel-padding: 20px;
+  --carousel-padding-bottom: 10px;
+  --carousel-margin: var(--carousel-padding) auto;
+  --carousel-breadcrumbs-padding: 0 5px;
+  --width-100per: 100%;
+  --margin-0: 0;
+  --padding-0: 0;
+  --border-width: 1px;
+  --border-style: solid;
+}
+
+.carousel {
+  max-width: var(--carousel-max-width);
+  margin: var(--carousel-margin);
+  padding: var(--carousel-padding);
+  border: var(--border-width) var(--border-style) var(--black);
+
+  figure {
+    margin: var(--margin-0);
+    padding-bottom: var(--carousel-padding-bottom);
+
+    img {
+      max-width: var(--width-100per);
+      height: auto;
+    }
+  }
+
+  .btns {
+    display: flex;
+    max-width: var(--carousel-max-width);
+    padding-bottom: var(--carousel-padding-bottom);
+
+    .prev {
+      margin-right: auto;
+    }
+
+    .next {
+      margin-left: auto;
+    }
+  }
+
+  .breadcrumbs {
+    list-style-type: none;
+    padding: var(--padding-0);
+    margin: var(--margin-0);
+    display: flex;
+    justify-content: center;
+
+    li {
+      display: inline-block;
+      margin: var(--carousel-breadcrumbs-padding);
+
+      button {
+        &.active {
+          background: var(--black);
+          color: var(--white);
+        }
+      }
+    }
+  }
+}

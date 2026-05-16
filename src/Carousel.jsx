@@ -44,12 +44,12 @@ export default function Carousel() {
       <ul className="breadcrumbs">
         {images.map((image, i) => {
           const num = i + 1;
-          const activeItem = imageNum === i;
+          const activeClass = imageNum === i ? 'active' : '';
 
           return (
             <li key={image.src}>
               <button
-                className={activeItem ? 'active' : ''}
+                className={activeClass}
                 onClick={() => handlePagination(num)}
               >
                 {num}

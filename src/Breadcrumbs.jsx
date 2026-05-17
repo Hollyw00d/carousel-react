@@ -10,6 +10,7 @@ export default function Breadcrumbs({ images, imageNum, handlePagination }) {
             <button
               className={activeClass}
               onClick={() => handlePagination(num)}
+              aria-label={`Show slide number ${num}`}
             >
               {num}
             </button>

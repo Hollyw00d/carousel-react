@@ -16,24 +16,20 @@ export default function BtnsSlideAlert({
   const delay = 3000;
 
   useEffect(() => {
-    let nextBtnRefId = null;
-    let prevBtnRefId = null;
+    let focusId = null;
 
     if (imageNum === 0 && isCarouselActive) {
       alertRef.current?.focus();
-      nextBtnRefId = setTimeout(() => nextBtnRef.current?.focus(), delay);
+      focusId = setTimeout(() => nextBtnRef.current?.focus(), delay);
     }
 
     if (imageNum === images.length - 1 && isCarouselActive) {
       alertRef.current?.focus();
-      prevBtnRefId = setTimeout(() => prevBtnRef.current?.focus(), delay);
+      focusId = setTimeout(() => prevBtnRef.current?.focus(), delay);
     }
 
-    return () => {
-      clearTimeout(nextBtnRefId);
-      clearTimeout(prevBtnRefId);
-    };
-  }, [imageNum]);
+    return () => clearTimeout(focusId);
+  }, [imageNum, isCarouselActive]);
 
   return (
     <>

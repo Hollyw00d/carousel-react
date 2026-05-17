@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import images from './api/images.js';
 import Slide from './Slide';
+import Btns from './Btns';
 import './Carousel.css';
+import Breadcrumbs from './Breadcrumbs.jsx';
 
 export default function Carousel() {
   const [imageNum, setImageNum] = useState(0);
@@ -29,35 +31,17 @@ export default function Carousel() {
   return (
     <div className="carousel">
       <Slide image={images[imageNum]} />
-      <div className="btns">
-        {imageNum !== 0 && (
-          <button className="prev" onClick={handlePrev}>
-            Previous
-          </button>
-        )}
-        {imageNum !== images.length - 1 && (
-          <button className="next" onClick={handleNext}>
-            Next
-          </button>
-        )}
-      </div>
-      <ul className="breadcrumbs">
-        {images.map((image, i) => {
-          const num = i + 1;
-          const activeClass = imageNum === i ? 'active' : '';
-
-          return (
-            <li key={image.src}>
-              <button
-                className={activeClass}
-                onClick={() => handlePagination(num)}
-              >
-                {num}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <Btns
+        imageNum={imageNum}
+        images={images}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
+      <Breadcrumbs
+        images={images}
+        imageNum={imageNum}
+        handlePagination={handlePagination}
+      />
     </div>
   );
 }

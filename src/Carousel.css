@@ -2,6 +2,7 @@
   --white: #fff;
   --black: #000;
   --platinum-gray: #e5e4e2;
+  --dark-gray: #63666a;
   --carousel-max-width: 600px;
   --carousel-padding: 20px;
   --carousel-padding-bottom: 10px;
@@ -29,6 +30,12 @@
     img {
       max-width: var(--width-100per);
       height: auto;
+    }
+
+    .image-not-found-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      background-color: var(--dark-gray);
     }
   }
 

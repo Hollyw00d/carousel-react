@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import images from './api/images.js';
 import Slide from './Slide';
-import SlideAlert from './SlideAlert';
-import Btns from './Btns';
+import BtnsSlideAlert from './BtnsSlideAlert';
 import Breadcrumbs from './Breadcrumbs';
 import './Carousel.css';
 
@@ -36,10 +35,10 @@ export default function Carousel() {
   return (
     <div className="carousel">
       <Slide image={images[imageNum]} />
-      <SlideAlert imageNum={imageNum} isCarouselActive={isCarouselActive} />
-      <Btns
+      <BtnsSlideAlert
         imageNum={imageNum}
         images={images}
+        isCarouselActive={isCarouselActive}
         handlePrev={handlePrev}
         handleNext={handleNext}
       />

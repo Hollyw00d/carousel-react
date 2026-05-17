@@ -1,11 +1,14 @@
 :root {
   --white: #fff;
   --black: #000;
+  --platinum-gray: #e5e4e2;
   --carousel-max-width: 600px;
   --carousel-padding: 20px;
   --carousel-padding-bottom: 10px;
   --carousel-margin: var(--carousel-padding) auto;
   --carousel-breadcrumbs-padding: 0 5px;
+  --carousel-btn-padding: 5px;
+  --carousel-btn-border-radius: 5px;
   --width-100per: 100%;
   --margin-0: 0;
   --padding-0: 0;
@@ -27,6 +30,13 @@
       max-width: var(--width-100per);
       height: auto;
     }
+  }
+
+  button {
+    padding: var(--carousel-btn-padding);
+    border: var(--border-width) var(--border-style) var(--black);
+    background-color: var(--platinum-gray);
+    border-radius: var(--carousel-btn-border-radius);
   }
 
   .btns {

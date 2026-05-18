@@ -1,11 +1,15 @@
 :root {
   --white: #fff;
   --black: #000;
+  --platinum-gray: #e5e4e2;
+  --dark-gray: #63666a;
   --carousel-max-width: 600px;
   --carousel-padding: 20px;
   --carousel-padding-bottom: 10px;
   --carousel-margin: var(--carousel-padding) auto;
   --carousel-breadcrumbs-padding: 0 5px;
+  --carousel-btn-padding: 5px;
+  --carousel-btn-border-radius: 5px;
   --width-100per: 100%;
   --margin-0: 0;
   --padding-0: 0;
@@ -27,6 +31,19 @@
       max-width: var(--width-100per);
       height: auto;
     }
+
+    .image-not-found-placeholder {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      background-color: var(--dark-gray);
+    }
+  }
+
+  button {
+    padding: var(--carousel-btn-padding);
+    border: var(--border-width) var(--border-style) var(--black);
+    background-color: var(--platinum-gray);
+    border-radius: var(--carousel-btn-border-radius);
   }
 
   .btns {
@@ -62,4 +79,15 @@
       }
     }
   }
+}
+
+.sr-only {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
 }

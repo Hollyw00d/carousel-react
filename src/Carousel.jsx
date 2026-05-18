@@ -1,63 +1,49 @@
 import { useState } from 'react';
 import images from './api/images.js';
 import Slide from './Slide';
+import BtnsSlideAlert from './BtnsSlideAlert';
+import Breadcrumbs from './Breadcrumbs';
 import './Carousel.css';
 
 export default function Carousel() {
   const [imageNum, setImageNum] = useState(0);
+  const [isCarouselActive, setIsCarouselActive] = useState(false);
+  const [isPrevNextBtnClick, setIsPrevNextBtnClick] = useState(false);
 
   const handlePrev = () => {
-    setImageNum((prev) => {
-      if (prev !== 0) {
-        return prev - 1;
-      }
-    });
+    setImageNum((prev) => Math.max(prev - 1, 0));
+    setIsCarouselActive(true);
+    setIsPrevNextBtnClick(true);
   };
 
   const handleNext = () => {
-    setImageNum((prev) => {
-      if (prev !== images.length - 1) {
-        return prev + 1;
-      }
-    });
+    setImageNum((prev) => Math.min(prev + 1, images.length - 1));
+    setIsCarouselActive(true);
+    setIsPrevNextBtnClick(true);
   };
 
   const handlePagination = (num) => {
     setImageNum(num - 1);
+    setIsCarouselActive(true);
+    setIsPrevNextBtnClick(false);
   };
 
   return (
     <div className="carousel">
       <Slide image={images[imageNum]} />
-      <div className="btns">
-        {imageNum !== 0 && (
-          <button className="prev" onClick={handlePrev}>
-            Previous
-          </button>
-        )}
-        {imageNum !== images.length - 1 && (
-          <button className="next" onClick={handleNext}>
-            Next
-          </button>
-        )}
-      </div>
-      <ul className="breadcrumbs">
-        {images.map((image, i) => {
-          const num = i + 1;
-          const activeClass = imageNum === i ? 'active' : '';
-
-          return (
-            <li key={image.src}>
-              <button
-                className={activeClass}
-                onClick={() => handlePagination(num)}
-              >
-                {num}
-              </button>
-            </li>
-          );
-        })}
-      </ul>
+      <BtnsSlideAlert
+        imageNum={imageNum}
+        images={images}
+        isCarouselActive={isCarouselActive}
+        isPrevNextBtnClick={isPrevNextBtnClick}
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+      />
+      <Breadcrumbs
+        images={images}
+        imageNum={imageNum}
+        handlePagination={handlePagination}
+      />
     </div>
   );
 }

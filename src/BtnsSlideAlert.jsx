@@ -11,7 +11,13 @@ export default function BtnsSlideAlert({
   const prevSlideTextConst = 'Show previous slide';
   const nextSlideTextConst = 'Show next slide';
   const num = imageNum + 1;
-  const slideShowingText = isCarouselActive ? `Slide ${num} showing` : '';
+  const imageDescription = images[imageNum]?.description
+    ? `: ${images[imageNum].description} `
+    : '';
+
+  const slideShowingText = isCarouselActive
+    ? `Slide ${num} showing${imageDescription}`
+    : '';
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
 
@@ -35,7 +41,7 @@ export default function BtnsSlideAlert({
 
   return (
     <>
-      <div role="alert" aria-live="assertive" className="sr-only">
+      <div role="status" aria-live="polite" className="sr-only">
         {slideShowingText}
       </div>
 

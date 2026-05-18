@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 
 export default function BtnsSlideAlert({
   imageNum,
@@ -7,6 +7,11 @@ export default function BtnsSlideAlert({
   handlePrev,
   handleNext
 }) {
+  const prevSlideTextConst = 'Show previous slide';
+  const nextSlideTextConst = 'Show next slide';
+  const [prevSlideText, setPrevSlideText] = useState(prevSlideTextConst);
+  const [nextSlideText, setNextSlideText] = useState(nextSlideTextConst);
+
   const num = imageNum + 1;
   const slideShowingText = isCarouselActive ? `Slide ${num} showing` : '';
   const prevBtnRef = useRef(null);
@@ -15,10 +20,13 @@ export default function BtnsSlideAlert({
   useEffect(() => {
     if (imageNum === 0) {
       nextBtnRef.current?.focus();
-    }
-
-    if (imageNum === images.length - 1) {
+      setNextSlideText(`${slideShowingText} &mdash; ${nextSlideTextConst}`);
+    } else if (imageNum === images.length - 1) {
       prevBtnRef.current?.focus();
+      setPrevSlideText(`${slideShowingText} &mdash; ${prevSlideTextConst}`);
+    } else {
+      setNextSlideText(nextSlideTextConst);
+      setPrevSlideText(prevSlideTextConst);
     }
   }, [imageNum]);
 
@@ -33,7 +41,7 @@ export default function BtnsSlideAlert({
           <button
             className="prev"
             onClick={handlePrev}
-            aria-label="Show previous slide"
+            aria-label={prevSlideText}
             ref={prevBtnRef}
             tabIndex={0}
           >
@@ -44,7 +52,7 @@ export default function BtnsSlideAlert({
           <button
             className="next"
             onClick={handleNext}
-            aria-label="Show next slide"
+            aria-label={nextSlideText}
             ref={nextBtnRef}
             tabIndex={0}
           >

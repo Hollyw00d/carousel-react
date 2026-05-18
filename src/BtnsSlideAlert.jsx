@@ -20,10 +20,10 @@ export default function BtnsSlideAlert({
   useEffect(() => {
     if (imageNum === 0) {
       nextBtnRef.current?.focus();
-      setNextSlideText(`${slideShowingText} &mdash; ${nextSlideTextConst}`);
+      setNextSlideText(`${slideShowingText} — ${nextSlideTextConst}`);
     } else if (imageNum === images.length - 1) {
       prevBtnRef.current?.focus();
-      setPrevSlideText(`${slideShowingText} &mdash; ${prevSlideTextConst}`);
+      setPrevSlideText(`${slideShowingText} — ${prevSlideTextConst}`);
     } else {
       setNextSlideText(nextSlideTextConst);
       setPrevSlideText(prevSlideTextConst);

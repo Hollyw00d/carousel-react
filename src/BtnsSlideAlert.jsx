@@ -41,7 +41,7 @@ export default function BtnsSlideAlert({
 
   return (
     <>
-      <div role="alert" aria-live="assertive" className="sr-only">
+      <div role="status" aria-live="polite" className="sr-only">
         {slideShowingText}
       </div>
 

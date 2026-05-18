@@ -9,37 +9,22 @@ export default function BtnsSlideAlert({
 }) {
   const num = imageNum + 1;
   const slideShowingText = isCarouselActive ? `Slide ${num} showing` : '';
-
-  const alertRef = useRef(null);
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
-  const delay = 3000;
 
   useEffect(() => {
-    let focusId = null;
-
-    if (imageNum === 0 && isCarouselActive) {
-      alertRef.current?.focus();
-      focusId = setTimeout(() => nextBtnRef.current?.focus(), delay);
+    if (imageNum === 0) {
+      nextBtnRef.current?.focus();
     }
 
-    if (imageNum === images.length - 1 && isCarouselActive) {
-      alertRef.current?.focus();
-      focusId = setTimeout(() => prevBtnRef.current?.focus(), delay);
+    if (imageNum === images.length - 1) {
+      prevBtnRef.current?.focus();
     }
-
-    return () => clearTimeout(focusId);
-  }, [imageNum, isCarouselActive]);
+  }, [imageNum]);
 
   return (
     <>
-      <div
-        role="alert"
-        aria-live="assertive"
-        className="sr-only"
-        tabIndex={-1}
-        ref={alertRef}
-      >
+      <div role="alert" aria-live="assertive" className="sr-only">
         {slideShowingText}
       </div>
 

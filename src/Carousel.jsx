@@ -11,21 +11,13 @@ export default function Carousel() {
   const [isPrevNextBtnClick, setIsPrevNextBtnClick] = useState(false);
 
   const handlePrev = () => {
-    setImageNum((prev) => {
-      if (prev !== 0) {
-        return prev - 1;
-      }
-    });
+    setImageNum((prev) => Math.max(prev - 1, 0));
     setIsCarouselActive(true);
     setIsPrevNextBtnClick(true);
   };
 
   const handleNext = () => {
-    setImageNum((prev) => {
-      if (prev !== images.length - 1) {
-        return prev + 1;
-      }
-    });
+    setImageNum((prev) => Math.min(prev + 1, images.length - 1));
     setIsCarouselActive(true);
     setIsPrevNextBtnClick(true);
   };
@@ -35,6 +27,8 @@ export default function Carousel() {
     setIsCarouselActive(true);
     setIsPrevNextBtnClick(false);
   };
+
+  console.log('imageNum', imageNum);
 
   return (
     <div className="carousel">

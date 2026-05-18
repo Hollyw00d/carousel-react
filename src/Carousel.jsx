@@ -8,6 +8,7 @@ import './Carousel.css';
 export default function Carousel() {
   const [imageNum, setImageNum] = useState(0);
   const [isCarouselActive, setIsCarouselActive] = useState(false);
+  const [isPrevNextBtnClick, setIsPrevNextBtnClick] = useState(false);
 
   const handlePrev = () => {
     setImageNum((prev) => {
@@ -16,6 +17,7 @@ export default function Carousel() {
       }
     });
     setIsCarouselActive(true);
+    setIsPrevNextBtnClick(true);
   };
 
   const handleNext = () => {
@@ -25,11 +27,13 @@ export default function Carousel() {
       }
     });
     setIsCarouselActive(true);
+    setIsPrevNextBtnClick(true);
   };
 
   const handlePagination = (num) => {
     setImageNum(num - 1);
     setIsCarouselActive(true);
+    setIsPrevNextBtnClick(false);
   };
 
   return (
@@ -39,6 +43,7 @@ export default function Carousel() {
         imageNum={imageNum}
         images={images}
         isCarouselActive={isCarouselActive}
+        isPrevNextBtnClick={isPrevNextBtnClick}
         handlePrev={handlePrev}
         handleNext={handleNext}
       />

@@ -4,6 +4,7 @@ export default function BtnsSlideAlert({
   imageNum,
   images,
   isCarouselActive,
+  isPrevNextBtnClick,
   handlePrev,
   handleNext
 }) {
@@ -18,10 +19,10 @@ export default function BtnsSlideAlert({
   const nextBtnRef = useRef(null);
 
   useEffect(() => {
-    if (imageNum === 0) {
+    if (imageNum === 0 && isPrevNextBtnClick) {
       nextBtnRef.current?.focus();
       setNextSlideText(`${slideShowingText} — ${nextSlideTextConst}`);
-    } else if (imageNum === images.length - 1) {
+    } else if (imageNum === images.length - 1 && isPrevNextBtnClick) {
       prevBtnRef.current?.focus();
       setPrevSlideText(`${slideShowingText} — ${prevSlideTextConst}`);
     } else {

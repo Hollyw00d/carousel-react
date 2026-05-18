@@ -11,12 +11,12 @@ export default function BtnsSlideAlert({
   const prevSlideTextConst = 'Show previous slide';
   const nextSlideTextConst = 'Show next slide';
   const num = imageNum + 1;
-  const imageAlt = images[imageNum]?.description
+  const imageDescription = images[imageNum]?.description
     ? `: ${images[imageNum].description} `
     : '';
 
   const slideShowingText = isCarouselActive
-    ? `Slide ${num} showing${imageAlt}`
+    ? `Slide ${num} showing${imageDescription}`
     : '';
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);

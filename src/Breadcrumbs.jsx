@@ -1,9 +1,4 @@
-export default function Breadcrumbs({
-  images,
-  imageNum,
-  setIsPrevNextBtnClick,
-  handlePagination
-}) {
+export default function Breadcrumbs({ images, imageNum, handlePagination }) {
   return (
     <ul className="breadcrumbs">
       {images.map((image, i) => {

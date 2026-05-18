@@ -28,9 +28,7 @@ export default function BtnsSlideAlert({
   useEffect(() => {
     if (imageNum === images.length - 1 && isPrevNextBtnClick) {
       prevBtnRef.current?.focus();
-    }
-
-    if (imageNum === 0 && isPrevNextBtnClick) {
+    } else if (imageNum === 0 && isPrevNextBtnClick) {
       nextBtnRef.current?.focus();
     }
   }, [imageNum, isPrevNextBtnClick, images.length]);

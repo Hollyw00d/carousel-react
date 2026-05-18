@@ -28,8 +28,6 @@ export default function Carousel() {
     setIsPrevNextBtnClick(false);
   };
 
-  console.log('imageNum', imageNum);
-
   return (
     <div className="carousel">
       <Slide image={images[imageNum]} />

@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 
 export default function BtnsSlideAlert({
   imageNum,
@@ -10,26 +10,30 @@ export default function BtnsSlideAlert({
 }) {
   const prevSlideTextConst = 'Show previous slide';
   const nextSlideTextConst = 'Show next slide';
-  const [prevSlideText, setPrevSlideText] = useState(prevSlideTextConst);
-  const [nextSlideText, setNextSlideText] = useState(nextSlideTextConst);
-
   const num = imageNum + 1;
   const slideShowingText = isCarouselActive ? `Slide ${num} showing` : '';
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
 
+  const prevSlideText =
+    imageNum === images.length - 1 && isPrevNextBtnClick
+      ? `${slideShowingText} — ${prevSlideTextConst}`
+      : prevSlideTextConst;
+
+  const nextSlideText =
+    imageNum === 0 && isPrevNextBtnClick
+      ? `${slideShowingText} — ${nextSlideTextConst}`
+      : nextSlideTextConst;
+
   useEffect(() => {
+    if (imageNum === images.length - 1 && isPrevNextBtnClick) {
+      prevBtnRef.current?.focus();
+    }
+
     if (imageNum === 0 && isPrevNextBtnClick) {
       nextBtnRef.current?.focus();
-      setNextSlideText(`${slideShowingText} — ${nextSlideTextConst}`);
-    } else if (imageNum === images.length - 1 && isPrevNextBtnClick) {
-      prevBtnRef.current?.focus();
-      setPrevSlideText(`${slideShowingText} — ${prevSlideTextConst}`);
-    } else {
-      setNextSlideText(nextSlideTextConst);
-      setPrevSlideText(prevSlideTextConst);
     }
-  }, [imageNum]);
+  }, [imageNum, isPrevNextBtnClick, images.length]);
 
   return (
     <>

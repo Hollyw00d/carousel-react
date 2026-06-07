@@ -52,7 +52,6 @@ export default function BtnsSlideAlert({
             onClick={handlePrev}
             aria-label={prevSlideText}
             ref={prevBtnRef}
-            tabIndex={0}
           >
             Previous
           </button>
@@ -63,7 +62,6 @@ export default function BtnsSlideAlert({
             onClick={handleNext}
             aria-label={nextSlideText}
             ref={nextBtnRef}
-            tabIndex={0}
           >
             Next
           </button>
